@@ -1,209 +1,344 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Derici Nihat Usta</title>
-    <!-- FontAwesome ikonları için -->
+    <title>Temassız Randevu | Akıllı Takvim Paneli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#a16207',
+                            DEFAULT: '#D4AF37', // Altın varank rengi
+                            light: '#F3E5AB',
+                            dark: '#AA7C11'
+                        },
+                        darkBg: '#0a0a0a',
+                        cardBg: '#141414',
+                        borderGold: '#332900'
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF 0%, #D4AF37 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+        .gold-border {
+            border-color: rgba(212, 175, 55, 0.3);
         }
-
-        .container {
-            width: 100%;
-            max-width: 440px;
-            background-color: #1a1a1a;
-            border: 2px solid #d4af37;
-            border-radius: 24px;
-            padding: 30px 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            text-align: center;
+        .gold-border:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
         }
-
-        /* Logo / Profil Alanı */
-        .profile-container {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 20px auto;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 3px solid #d4af37;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #262626;
-            color: #d4af37;
-            font-size: 40px;
-        }
-
-        .status-dot {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            width: 16px;
-            height: 16px;
-            background-color: #27ae60;
-            border: 2px solid #1a1a1a;
-            border-radius: 50%;
-        }
-
-        h1 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #ffffff;
-        }
-
-        .subtitle {
-            font-size: 13px;
-            color: #d4af37;
-            letter-spacing: 1px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* Butonlar */
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 15px;
-            border-radius: 14px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: transform 0.2s, opacity 0.2s;
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        .btn-phone {
-            background-color: #262626;
-            color: #ffffff;
-            border: 1px solid #333;
-        }
-
-        .btn-phone i {
-            color: #d4af37;
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: #ffffff;
-        }
-
-        .btn-instagram {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            color: #ffffff;
-        }
-
-        /* Adres Kutusu */
-        .address-box {
-            background-color: #222222;
-            border: 1px solid #333;
-            border-radius: 16px;
-            padding: 18px;
-            margin-top: 10px;
-            text-align: left;
-        }
-
-        .address-title {
-            font-size: 11px;
-            color: #888;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-            font-weight: 700;
-        }
-
-        .address-text {
-            font-size: 13px;
-            color: #ccc;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .map-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #d4af37;
-            font-size: 13px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .map-link:hover {
-            text-decoration: underline;
-        }
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #332900; border-radius: 4px; }
     </style>
 </head>
-<body>
+<body class="bg-darkBg text-zinc-100 min-h-screen flex flex-col justify-between selection:bg-gold-600 selection:text-black">
 
-    <div class="container">
-        <!-- Profil Logosu -->
-        <div class="profile-container">
-            <div class="profile-img">
-                <i class="fa-solid fa-vest"></i>
+    <!-- Üst Bar & Panel Değiştirici -->
+    <header class="border-b border-borderGold bg-darkBg/90 backdrop-blur-md sticky top-0 z-50 px-4 py-3">
+        <div class="max-w-xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-lg bg-gold-500/20 border border-gold/40 flex items-center justify-center text-gold-400 font-bold">
+                    <i class="fa-solid fa-bolt text-xs"></i>
+                </div>
+                <div>
+                    <span class="text-sm font-bold tracking-wider gold-gradient-text">TEMASSIZ RANDEVU</span>
+                    <span class="block text-[9px] text-gold-500 uppercase tracking-widest">Temassız Girişim</span>
+                </div>
             </div>
-            <div class="status-dot"></div>
+            <!-- Panel Geçiş Butonları -->
+            <div class="flex bg-zinc-900 border border-gold/30 rounded-xl p-1 text-xs font-semibold">
+                <button onclick="switchTab('customer')" id="btnCustomer" class="px-3 py-1.5 rounded-lg bg-gold-500 text-black transition-all">Müşteri Ekranı</button>
+                <button onclick="switchTab('admin')" id="btnAdmin" class="px-3 py-1.5 rounded-lg text-zinc-400 hover:text-gold-400 transition-all">İşletme Paneli</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- İçerik Alanı -->
+    <main class="w-full max-w-md mx-auto p-4 my-auto">
+
+        <!-- 1. MÜŞTERİ TAKVİM VE RANDEVU EKRANI -->
+        <div id="customerView" class="space-y-6">
+            <div class="text-center pt-2">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-gold-700 via-gold-500 to-gold-300 mx-auto flex items-center justify-center text-black font-extrabold text-xl shadow-xl shadow-gold-500/20 mb-3 border border-gold/40">
+                    LV
+                </div>
+                <h1 class="text-xl font-extrabold text-zinc-100">Liva Güzellik & Tırnak</h1>
+                <p class="text-xs text-gold-400 mt-0.5"><i class="fa-solid fa-location-dot mr-1"></i> Kadıköy, İstanbul</p>
+            </div>
+
+            <div class="bg-cardBg border border-gold/30 rounded-3xl p-6 shadow-2xl relative overflow-hidden space-y-5">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl"></div>
+
+                <!-- Adım 1: Hizmet Seçimi -->
+                <div>
+                    <label class="block text-xs font-semibold text-gold-400 mb-2 uppercase tracking-wider">1. Hizmet Seçin</label>
+                    <div class="space-y-2" id="servicesContainer">
+                        <div onclick="selectService(this, 'Jel Tırnak Uygulaması', '850 TL', '60 dk')" class="service-card cursor-pointer border border-gold bg-gold-500/10 p-3 rounded-xl flex justify-between items-center transition-all">
+                            <div>
+                                <div class="text-xs font-bold text-zinc-100">Jel Tırnak Uygulaması</div>
+                                <div class="text-[10px] text-zinc-400">60 dk • Uzman: Fatih Usta</div>
+                            </div>
+                            <div class="text-xs font-extrabold text-gold-400">850 TL</div>
+                        </div>
+                        <div onclick="selectService(this, 'Cilt Bakımı & Hydrafacial', '1.200 TL', '45 dk')" class="service-card cursor-pointer border border-gold/30 bg-darkBg p-3 rounded-xl flex justify-between items-center transition-all hover:border-gold">
+                            <div>
+                                <div class="text-xs font-bold text-zinc-100">Cilt Bakımı & Hydrafacial</div>
+                                <div class="text-[10px] text-zinc-400">45 dk • Uzman: Leyla Hanım</div>
+                            </div>
+                            <div class="text-xs font-extrabold text-gold-400">1.200 TL</div>
+                        </div>
+                        <div onclick="selectService(this, 'İpek Kirpik', '950 TL', '75 dk')" class="service-card cursor-pointer border border-gold/30 bg-darkBg p-3 rounded-xl flex justify-between items-center transition-all hover:border-gold">
+                            <div>
+                                <div class="text-xs font-bold text-zinc-100">İpek Kirpik</div>
+                                <div class="text-[10px] text-zinc-400">75 dk • Uzman: Leyla Hanım</div>
+                            </div>
+                            <div class="text-xs font-extrabold text-gold-400">950 TL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adım 2: Takvim (Gün Seçimi) -->
+                <div>
+                    <label class="block text-xs font-semibold text-gold-400 mb-2 uppercase tracking-wider">2. Gün Seçin</label>
+                    <div class="grid grid-cols-4 gap-2" id="daysContainer">
+                        <!-- JS ile doldurulacak -->
+                    </div>
+                </div>
+
+                <!-- Adım 3: Saat Seçimi -->
+                <div>
+                    <label class="block text-xs font-semibold text-gold-400 mb-2 uppercase tracking-wider">3. Müsait Saat Seçin</label>
+                    <div class="grid grid-cols-3 gap-2" id="hoursContainer">
+                        <!-- JS ile doldurulacak -->
+                    </div>
+                </div>
+
+                <!-- Adım 4: İletişim Bilgileri -->
+                <div class="space-y-3 pt-3 border-t border-borderGold">
+                    <label class="block text-xs font-semibold text-gold-400 uppercase tracking-wider">4. Bilgileriniz</label>
+                    <input type="text" id="clientName" placeholder="Adınız Soyadınız" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
+                    <input type="tel" id="clientPhone" placeholder="Telefon (05XX XXX XX XX)" class="w-full bg-darkBg border border-gold/30 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none gold-border">
+                </div>
+
+                <button onclick="submitBooking()" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-300 text-black font-extrabold text-sm tracking-wide uppercase hover:opacity-95 shadow-lg shadow-gold-500/20 transition-all mt-2">
+                    Randevuyu Onayla & Tamamla
+                </button>
+            </div>
         </div>
 
-        <h1>Derici Nihat Usta</h1>
-        <div class="subtitle">BİRİNCİ KALİTE KUZU DERİSİ & ÖZEL ÜRETİM</div>
-
-        <!-- Telefon Butonu -->
-        <a href="tel:05404343452" class="btn btn-phone">
-            <i class="fa-solid fa-phone"></i> 0540 434 34 52
-        </a>
-
-        <!-- WhatsApp Butonu -->
-        <a href="https://wa.me/905404343452?text=Merhaba,%20bilgi%20almak%20istiyorum." target="_blank" class="btn btn-whatsapp">
-            <i class="fa-brands fa-whatsapp" style="font-size: 18px;"></i> WhatsApp ile Sipariş / Bilgi
-        </a>
-
-        <!-- Instagram Butonu -->
-        <a href="https://instagram.com/dericinihatustaa" target="_blank" class="btn btn-instagram">
-            <i class="fa-brands fa-instagram" style="font-size: 18px;"></i> Instagram'da Takip Et
-        </a>
-
-        <!-- Mağaza Adresi ve Harita -->
-        <div class="address-box">
-            <div class="address-title">MAĞAZA ADRESİ</div>
-            <div class="address-text">
-                Eyüpsultan Mahallesi, Kızılay Caddesi, No: 33/C, Samandıra, Sancaktepe / İstanbul
+        <!-- 2. İŞLETME YÖNETİM PANELİ -->
+        <div id="adminView" class="space-y-6 hidden">
+            <div class="flex justify-between items-center bg-cardBg border border-gold/30 p-4 rounded-2xl">
+                <div>
+                    <h2 class="text-sm font-bold text-zinc-100">İşletme Yönetim Paneli</h2>
+                    <p class="text-[11px] text-zinc-400">Gelen randevuları anlık takip edin</p>
+                </div>
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-gold-500/20 text-gold-400 border border-gold/40">Canlı Takvim</span>
             </div>
-            <a href="https://maps.google.com/?q=Eyüpsultan+Mahallesi+Kızılay+Caddesi+No:33+Samandıra+Sancaktepe+İstanbul" target="_blank" class="map-link">
-                <i class="fa-solid fa-map-location-dot"></i> Haritada Görüntüle & Yol Tarifi Al
-            </a>
+
+            <!-- Randevu Listesi -->
+            <div class="space-y-3">
+                <h3 class="text-xs font-semibold text-gold-400 uppercase tracking-wider">Gelen Randevular (<span id="appointmentCount">0</span>)</h3>
+                
+                <div id="appointmentsList" class="space-y-3 max-h-[350px] overflow-y-auto pr-1">
+                    <div id="noAppointments" class="text-center py-10 text-zinc-500 text-xs bg-cardBg border border-borderGold rounded-2xl">
+                        Henüz randevu bulunmuyor. Müşteri ekranından test randevusu oluşturabilirsiniz.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Başarılı Randevu Bildirim Modalı -->
+    <div id="successModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-cardBg border border-gold/40 rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl space-y-4">
+            <div class="w-16 h-16 rounded-full bg-gold-500/20 border border-gold/50 flex items-center justify-center text-gold-400 text-2xl mx-auto">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-xl font-bold text-zinc-100">Randevunuz Başarıyla Oluşturuldu!</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">
+                Seçtiğiniz saat rezerve edildi ve işletme paneline eklendi.
+            </p>
+            <button onclick="closeModal()" class="w-full py-3 rounded-xl bg-gold-500 text-black font-bold hover:bg-gold-400 transition-all text-sm">
+                Tamam & Paneli Gör
+            </button>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="w-full py-4 text-center text-[11px] text-zinc-500 border-t border-borderGold">
+        <p>Altyapı <span class="text-gold-500 font-bold">Temassız Randevu</span> sistemine aittir. — Temassız Girişim</p>
+    </footer>
+
+    <script>
+        let appointments = JSON.parse(localStorage.getItem('temassiz_appointments')) || [];
+        let selectedService = "Jel Tırnak Uygulaması (850 TL)";
+        let selectedDay = "Bugün (06 Kas)";
+        let selectedTime = "11:00";
+
+        const daysList = [
+            { dayName: 'Bugün', dateStr: '06 Kas' },
+            { dayName: 'Yarın', dateStr: '07 Kas' },
+            { dayName: 'Cumartesi', dateStr: '08 Kas' },
+            { dayName: 'Pazar', dateStr: '09 Kas' }
+        ];
+
+        const hoursList = ['10:00', '11:30', '13:00', '14:30', '16:00', '17:30'];
+
+        function initCalendar() {
+            // Günleri bas
+            const daysContainer = document.getElementById('daysContainer');
+            daysContainer.innerHTML = '';
+            daysList.forEach((d, idx) => {
+                const isSelected = idx === 0;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `p-2.5 rounded-xl border text-center transition-all ${isSelected ? 'bg-gold-500 border-gold text-black font-bold shadow-lg shadow-gold-500/20' : 'bg-darkBg border-gold/30 text-zinc-300 hover:border-gold'}`;
+                btn.innerHTML = `<div class="text-[11px] uppercase">${d.dayName}</div><div class="text-xs font-semibold mt-0.5">${d.dateStr}</div>`;
+                btn.onclick = () => {
+                    selectedDay = `${d.dayName} (${d.dateStr})`;
+                    document.querySelectorAll('#daysContainer button').forEach(b => {
+                        b.className = "p-2.5 rounded-xl border text-center transition-all bg-darkBg border-gold/30 text-zinc-300 hover:border-gold";
+                    });
+                    btn.className = "p-2.5 rounded-xl border text-center transition-all bg-gold-500 border-gold text-black font-bold shadow-lg shadow-gold-500/20";
+                };
+                daysContainer.appendChild(btn);
+            });
+
+            // Saatleri bas
+            const hoursContainer = document.getElementById('hoursContainer');
+            hoursContainer.innerHTML = '';
+            hoursList.forEach((h, idx) => {
+                const isSelected = idx === 0;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `py-2.5 rounded-xl border text-center text-xs font-bold transition-all ${isSelected ? 'bg-gold-500 border-gold text-black shadow-lg shadow-gold-500/20' : 'bg-darkBg border-gold/30 text-zinc-300 hover:border-gold'}`;
+                btn.innerText = h;
+                btn.onclick = () => {
+                    selectedTime = h;
+                    document.querySelectorAll('#hoursContainer button').forEach(b => {
+                        b.className = "py-2.5 rounded-xl border text-center text-xs font-bold transition-all bg-darkBg border-gold/30 text-zinc-300 hover:border-gold";
+                    });
+                    btn.className = "py-2.5 rounded-xl border text-center text-xs font-bold transition-all bg-gold-500 border-gold text-black shadow-lg shadow-gold-500/20";
+                };
+                hoursContainer.appendChild(btn);
+            });
+        }
+
+        function selectService(element, name, price, duration) {
+            selectedService = `${name} (${price})`;
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.className = "service-card cursor-pointer border border-gold/30 bg-darkBg p-3 rounded-xl flex justify-between items-center transition-all hover:border-gold";
+            });
+            element.className = "service-card cursor-pointer border border-gold bg-gold-500/10 p-3 rounded-xl flex justify-between items-center transition-all";
+        }
+
+        function switchTab(tab) {
+            const customerView = document.getElementById('customerView');
+            const adminView = document.getElementById('adminView');
+            const btnCustomer = document.getElementById('btnCustomer');
+            const btnAdmin = document.getElementById('btnAdmin');
+
+            if (tab === 'customer') {
+                customerView.classList.remove('hidden');
+                adminView.classList.add('hidden');
+                btnCustomer.className = "px-3 py-1.5 rounded-lg bg-gold-500 text-black transition-all";
+                btnAdmin.className = "px-3 py-1.5 rounded-lg text-zinc-400 hover:text-gold-400 transition-all";
+            } else {
+                customerView.classList.add('hidden');
+                adminView.classList.remove('hidden');
+                btnAdmin.className = "px-3 py-1.5 rounded-lg bg-gold-500 text-black transition-all";
+                btnCustomer.className = "px-3 py-1.5 rounded-lg text-zinc-400 hover:text-gold-400 transition-all";
+                renderAppointments();
+            }
+        }
+
+        function submitBooking() {
+            const name = document.getElementById('clientName').value.trim();
+            const phone = document.getElementById('clientPhone').value.trim();
+
+            if (!name || !phone) {
+                alert('Lütfen adınızı ve telefon numaranızı giriniz.');
+                return;
+            }
+
+            const newAppt = {
+                id: Date.now(),
+                service: selectedService,
+                day: selectedDay,
+                time: selectedTime,
+                name: name,
+                phone: phone,
+                dateAdded: new Date().toLocaleDateString('tr-TR')
+            };
+
+            appointments.unshift(newAppt);
+            localStorage.setItem('temassiz_appointments', JSON.stringify(appointments));
+
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientPhone').value = '';
+            initCalendar();
+            switchTab('admin'); 
+        }
+
+        function renderAppointments() {
+            const listContainer = document.getElementById('appointmentsList');
+            const countSpan = document.getElementById('appointmentCount');
+            const noApptDiv = document.getElementById('noAppointments');
+
+            countSpan.innerText = appointments.length;
+
+            if (appointments.length === 0) {
+                noApptDiv.classList.remove('hidden');
+                listContainer.innerHTML = '';
+                listContainer.appendChild(noApptDiv);
+                return;
+            }
+
+            let html = '';
+            appointments.forEach(app => {
+                html += `
+                    <div class="bg-cardBg border border-gold/30 rounded-2xl p-4 text-left space-y-2 shadow-md">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs font-bold text-gold-400">${app.service}</span>
+                            <span class="text-[10px] bg-zinc-900 border border-gold/30 text-zinc-300 px-2 py-0.5 rounded-md">${app.day} — ${app.time}</span>
+                        </div>
+                        <div class="text-xs text-zinc-200 font-medium">
+                            <i class="fa-solid fa-user text-gold-500 mr-1"></i> ${app.name} 
+                            <span class="text-zinc-400 ml-2"><i class="fa-solid fa-phone text-gold-500 mr-1"></i> ${app.phone}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            listContainer.innerHTML = html;
+        }
+
+        window.onload = initCalendar;
+    </script>
 </body>
 </html>
