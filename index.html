@@ -3,207 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Derici Nihat Usta</title>
-    <!-- FontAwesome ikonları için -->
+    <title>Derici Nihat Usta | Lüks Deri Giyim ve Özel Üretim</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.Google/"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome İkonları -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         body {
-            background-color: #121212;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0d0d;
+            color: #f3f4f6;
         }
-
-        .container {
-            width: 100%;
-            max-width: 440px;
-            background-color: #1a1a1a;
+        .gold-border {
             border: 2px solid #d4af37;
-            border-radius: 24px;
-            padding: 30px 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            text-align: center;
         }
-
-        /* Logo / Profil Alanı */
-        .profile-container {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 20px auto;
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
         }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 3px solid #d4af37;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #262626;
-            color: #d4af37;
-            font-size: 40px;
-        }
-
-        .status-dot {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            width: 16px;
-            height: 16px;
-            background-color: #27ae60;
-            border: 2px solid #1a1a1a;
-            border-radius: 50%;
-        }
-
-        h1 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #ffffff;
-        }
-
-        .subtitle {
-            font-size: 13px;
-            color: #d4af37;
-            letter-spacing: 1px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* Butonlar */
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 15px;
-            border-radius: 14px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: transform 0.2s, opacity 0.2s;
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        .btn-phone {
-            background-color: #262626;
-            color: #ffffff;
-            border: 1px solid #333;
-        }
-
-        .btn-phone i {
-            color: #d4af37;
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: #ffffff;
-        }
-
-        .btn-instagram {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            color: #ffffff;
-        }
-
-        /* Adres Kutusu */
-        .address-box {
-            background-color: #222222;
-            border: 1px solid #333;
-            border-radius: 16px;
-            padding: 18px;
-            margin-top: 10px;
-            text-align: left;
-        }
-
-        .address-title {
-            font-size: 11px;
-            color: #888;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-            font-weight: 700;
-        }
-
-        .address-text {
-            font-size: 13px;
-            color: #ccc;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .map-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #d4af37;
-            font-size: 13px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .map-link:hover {
-            text-decoration: underline;
+        .instagram-gradient {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-6">
 
-    <div class="container">
-        <!-- Profil Logosu -->
-        <div class="profile-container">
-            <div class="profile-img">
+    <!-- Ana Kart Konteyneri -->
+    <div class="w-full max-w-md bg-[#141414] gold-border rounded-3xl p-6 sm:p-8 gold-glow text-center relative overflow-hidden">
+        
+        <!-- Üst Dekoratif Işık Efekti -->
+        <div class="absolute -top-24 left-1/2 transform -translate-x-1/2 w-48 h-48 bg-[#d4af37] opacity-10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Profil Logosu / Avatar -->
+        <div class="relative w-28 h-28 mx-auto mb-5">
+            <div class="w-full h-full rounded-full gold-border flex items-center justify-center bg-[#1c1c1c] shadow-inner text-[#d4af37] text-4xl">
                 <i class="fa-solid fa-vest"></i>
             </div>
-            <div class="status-dot"></div>
+            <!-- Çevrimiçi Durum Noktası -->
+            <div class="absolute bottom-1 right-1 w-5 h-5 bg-emerald-500 border-4 border-[#141414] rounded-full"></div>
         </div>
 
-        <h1>Derici Nihat Usta</h1>
-        <div class="subtitle">BİRİNCİ KALİTE KUZU DERİSİ & ÖZEL ÜRETİM</div>
+        <!-- İsim ve Ünvan -->
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-2">Derici Nihat Usta</h1>
+        <p class="text-xs sm:text-sm font-semibold text-[#d4af37] tracking-widest uppercase mb-8">
+            Birinci Kalite Kuzu Derisi & Özel Üretim
+        </p>
 
-        <!-- Telefon Butonu -->
-        <a href="tel:05404343452" class="btn btn-phone">
-            <i class="fa-solid fa-phone"></i> 0540 434 34 52
-        </a>
+        <!-- Butonlar Grubu -->
+        <div class="space-y-3.5">
+            
+            <!-- Telefon İle Arama Butonu -->
+            <a href="tel:05404343452" class="flex items-center justify-center gap-3 w-full py-3.5 px-5 bg-[#1f1f1f] hover:bg-[#282828] text-white rounded-xl font-semibold border border-[#333] transition-all duration-200 transform active:scale-95 shadow-md">
+                <span class="w-8 h-8 rounded-full bg-[#333] flex items-center justify-center text-[#d4af37]">
+                    <i class="fa-solid fa-phone text-sm"></i>
+                </span>
+                <span class="tracking-wide">0540 434 34 52</span>
+            </a>
 
-        <!-- WhatsApp Butonu -->
-        <a href="https://wa.me/905404343452?text=Merhaba,%20bilgi%20almak%20istiyorum." target="_blank" class="btn btn-whatsapp">
-            <i class="fa-brands fa-whatsapp" style="font-size: 18px;"></i> WhatsApp ile Sipariş / Bilgi
-        </a>
+            <!-- WhatsApp Sipariş / Bilgi Butonu -->
+            <a href="https://wa.me/905404343452?text=Merhaba,%20deri%20mont/ceket%20modelleriniz%20ve%20fiyatlarınız%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="flex items-center justify-center gap-3 w-full py-3.5 px-5 bg-[#25D366] hover:bg-[#22bf5b] text-white rounded-xl font-semibold transition-all duration-200 transform active:scale-95 shadow-lg shadow-[#25D366]/20">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                <span class="tracking-wide">WhatsApp ile Sipariş / Bilgi</span>
+            </a>
 
-        <!-- Instagram Butonu -->
-        <a href="https://instagram.com/dericinihatustaa" target="_blank" class="btn btn-instagram">
-            <i class="fa-brands fa-instagram" style="font-size: 18px;"></i> Instagram'da Takip Et
-        </a>
+            <!-- Instagram Yönlendirme Butonu -->
+            <a href="https://instagram.com/dericinihatustaa" target="_blank" class="flex items-center justify-center gap-3 w-full py-3.5 px-5 instagram-gradient hover:opacity-95 text-white rounded-xl font-semibold transition-all duration-200 transform active:scale-95 shadow-lg shadow-pink-600/20">
+                <i class="fa-brands fa-instagram text-2xl"></i>
+                <span class="tracking-wide">@dericinihatustaa</span>
+            </a>
 
-        <!-- Mağaza Adresi ve Harita -->
-        <div class="address-box">
-            <div class="address-title">MAĞAZA ADRESİ</div>
-            <div class="address-text">
-                Eyüpsultan Mahallesi, Kızılay Caddesi, No: 33/C, Samandıra, Sancaktepe / İstanbul
+        </div>
+
+        <!-- Adres ve Harita Kartı -->
+        <div class="mt-6 bg-[#1a1a1a] border border-[#262626] rounded-2xl p-4 text-left">
+            <div class="flex items-center gap-2 text-[#d4af37] text-xs font-bold tracking-wider uppercase mb-1.5">
+                <i class="fa-solid fa-location-dot"></i> Mağaza Adresi
             </div>
-            <a href="https://maps.google.com/?q=Eyüpsultan+Mahallesi+Kızılay+Caddesi+No:33+Samandıra+Sancaktepe+İstanbul" target="_blank" class="map-link">
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-3">
+                Eyüpsultan Mahallesi, Kızılay Caddesi, No: 33/C, Samandıra, Sancaktepe / İstanbul
+            </p>
+            <a href="https://maps.google.com/?q=Eyüpsultan+Mahallesi+Kızılay+Caddesi+No:33+Samandıra+Sancaktepe+İstanbul" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-[#d4af37] hover:underline">
                 <i class="fa-solid fa-map-location-dot"></i> Haritada Görüntüle & Yol Tarifi Al
             </a>
         </div>
+
+        <!-- Alt Telif / Bilgilendirme -->
+        <div class="mt-6 text-[11px] text-gray-500 font-medium">
+            © 2026 Derici Nihat Usta. Tüm Hakları Saklıdır.
+        </div>
+
     </div>
 
 </body>
 </html>
+```
